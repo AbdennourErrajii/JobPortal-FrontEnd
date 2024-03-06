@@ -1,0 +1,36 @@
+
+<div class="container mt-4">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header text-center">Authentification</div>
+            <div class="text-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+            <div class="card-body">
+                {{userFormGroup.value | json}}
+
+                <form [formGroup]="userFormGroup" (ngSubmit)="handleLogin()">
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <select formControlName="role" class="form-control">
+                            <option value="candidate">Candidate</option>
+                            <option value="employer">Employer</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email:</label>
+                        <input type="text" formControlName="email" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password:</label>
+                        <input type="password" formControlName="password" class="form-control">
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="offre.component.css" rel="stylesheet">
+  <title>Offre</title>
+</head>
+<body>
+<div *ngIf="postulationReussie" class="alert alert-success">
+  Postulation réussie !
+</div>
+<div class="container mt-2 p-0">
+  <div *ngIf="offres" class="row">
+    <div  class="col-md-4" *ngFor="let offre of offres">
+      <div class="card card-margin custom-card-width">
+        <div class="card-header no-border">
+          <h5 class="card-title text-center">{{offre.titre}}</h5>
+        </div>
+        <div class="card-body pt-0">
+          <div class="widget-49">
+            <div class="widget-49-title-wrapper">
+              <div class="widget-49-date-primary">
+                <span class="widget-49-date-day">{{offre.id}}</span>
+                <span class="widget-49-date-month">Offre</span>
+              </div>
+              <div class="widget-49-meeting-info">
+                <span class="widget-49-pro-title">{{offre.descriptionPoste}}</span>
+                <span class="widget-49-meeting-time text-primary">{{offre.datePublication}}<span class="text-dark"> to </span>{{offre.dateLimiteCandidature}} </span>
+              </div>
+            </div>
+            <ol class="widget-49-meeting-points">
+              <li class="widget-49-meeting-item">City :<span>{{offre.ville.nom}}</span></li>
+              <li class="widget-49-meeting-item">Salary :<span>{{offre.salaire}}</span></li>
+              <li class="widget-49-meeting-item">Type of Contract : <span>{{offre.contrat}}</span></li>
+              <li class="widget-49-meeting-item">Level of Study : <span>{{offre.niveauEtude}}</span></li>
+              <li class="widget-49-meeting-item">Field: <span> {{offre.domaine.nom}} </span></li>
+            </ol>
+            <div class="widget-49-meeting-action" *ngIf="authService.isCandidat()">
+              <a class="btn btn-sm btn-success" (click)="handlePostuler(offre.id)">Postuler</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

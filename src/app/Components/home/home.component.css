@@ -1,0 +1,6 @@
+/* Ajoutez cette classe à vos cartes pour l'effet de survol */
+.card-hover:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
