@@ -7,10 +7,12 @@ import {OffreComponent} from "./Components/offre/offre.component";
 import {CandidatureComponent} from "./Components/candidature/candidature.component";
 import {LoginComponent} from "./Components/login/login.component";
 import {AuthenticationGuard} from "./Guards/authentication.guard";
+import {SignupComponent} from "./Components/signup/signup.component";
 
 const routes: Routes = [
   { path: "login", component:  LoginComponent},
   { path: "", component:  LoginComponent },
+  {path:"signup",component:SignupComponent},
   { path: "user", component:  HeadComponent ,canActivate: [AuthenticationGuard],
     children:[
       { path: "home", component:  HomeComponent },

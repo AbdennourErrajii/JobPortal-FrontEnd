@@ -11,6 +11,7 @@ import { CandidatureComponent } from './Components/candidature/candidature.compo
 import { HeadComponent } from './Components/head/head.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { SignupComponent } from './Components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     ProfilComponent,
     OffreComponent,
     CandidatureComponent,
-    HeadComponent
+    HeadComponent,
+    SignupComponent
   ],
     imports: [
         BrowserModule,
