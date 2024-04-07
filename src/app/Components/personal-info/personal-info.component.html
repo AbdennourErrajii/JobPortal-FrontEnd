@@ -1,54 +1,49 @@
 <!-- Informations personnelles -->
 <div class="tab-pane fade show active" id="pills-info" role="tabpanel" aria-labelledby="pills-info-tab">
-    <div class="card">
-        <div class="card-body">
+  <div class="card">
+    <div class="card-body">
 
-            <div class="container rounded bg-white">
-                <div class="row">
-                    <div class="col-md-3 border-right">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                            <span class="font-weight-bold">{{ Candidat?.prenom }} {{ Candidat?.nom }}</span>
-                            <span class="text-black-50">{{Candidat.email}}</span>
-                            {{Candidat.imageCandidat}}
-                        </div>
-                    </div>
-                    <div class="col-md-4 border-right">
-                        <div >
-                            <div class="row">
-                                <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" [(ngModel)]="Candidat.prenom"></div>
-                                <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" [(ngModel)]="Candidat.nom"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" [(ngModel)]="Candidat.telephone"></div>
-                                <div class="col-md-12"><label class="labels">City</label><input type="text" class="form-control" [(ngModel)]="Candidat.lieuDeResidence" ></div>
-                                <div class="col-md-12"><label class="labels">Adress</label><input type="text" class="form-control" [(ngModel)]="Candidat.adresse"></div>
-                                <div class="col-md-12"><label class="labels">Gender</label>
-                                    <select class="form-control" [(ngModel)]="Candidat.sexe">
-                                        <option value="t_plein">Male</option>
-                                        <option value="t_partiel">Female</option>
-                                    </select>
-                                </div>
-
-
-                            </div>
-                            <div class="mt-2 text-center">
-                                <button class="btn btn-primary profile-button" type="button">Enregistrer</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="">
-                            <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" [(ngModel)]="Candidat.email"></div>
-                            <div class="col-md-12"><label class="labels">Password</label><input type="text" class="form-control" [(ngModel)]="Candidat.motDePasse"></div>
-                            <div class="col-md-12"><label class="labels">Lettre Motivation</label><textarea type="text" class="form-control " style="height: 150px;" [(ngModel)]="Candidat.lettreMotivation"> </textarea></div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container rounded bg-white">
+        <div class="row">
+          <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+              <span class="font-weight-bold">{{ Candidat.prenom }} {{ Candidat.nom }}</span>
+              <span class="text-black-50">{{Candidat.email}}</span>
             </div>
-
+          </div>
+          <div class="col-md-4 border-right">
+            <div >
+              <div class="row">
+                <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" [(ngModel)]="Candidat.prenom" [readonly]="!isEditable"></div>
+                <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" [(ngModel)]="Candidat.nom" [readonly]="!isEditable"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" [(ngModel)]="Candidat.telephone" [readonly]="!isEditable"></div>
+                <div class="col-md-12"><label class="labels">City</label><input type="text" class="form-control" [(ngModel)]="Candidat.lieuDeResidence" [readonly]="!isEditable"></div>
+                <div class="col-md-12"><label class="labels">Adress</label><input type="text" class="form-control" [(ngModel)]="Candidat.adresse" [readonly]="!isEditable"></div>
+                <div class="col-md-12"><label class="labels">Gender</label>
+                  <select class="form-control" [(ngModel)]="Candidat.sexe" [disabled]="!isEditable">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-2 text-center">
+                <button class="btn btn-primary profile-button" type="button" (click)="isEditable = !isEditable">Edit</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="">
+              <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" [(ngModel)]="Candidat.email" [readonly]="!isEditable"></div>
+              <div class="col-md-12"><label class="labels">Password</label><input type="text" class="form-control" [(ngModel)]="Candidat.motDePasse" [readonly]="!isEditable"></div>
+              <div class="col-md-12"><label class="labels">Lettre Motivation</label><textarea type="text" class="form-control " style="height: 150px;" [(ngModel)]="Candidat.lettreMotivation" [readonly]="!isEditable"> </textarea></div>
+            </div>
+          </div>
         </div>
+      </div>
+
     </div>
+  </div>
 </div>
-
-

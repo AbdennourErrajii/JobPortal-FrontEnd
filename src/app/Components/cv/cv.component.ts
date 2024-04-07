@@ -10,6 +10,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class CvComponent implements OnInit {
   authUserString = localStorage.getItem('authUser');
   public cv: any;
+  public error: string | null = null;
 
   constructor(private cvCandidatService: CvCandidatService, private sanitizer: DomSanitizer) { }
 
@@ -22,6 +23,7 @@ export class CvComponent implements OnInit {
           this.displayPdf();
         },
         error: (err) => {
+          this.error = 'An error occurred while loading the CV.';
           console.log(err);
         }
       });
@@ -30,7 +32,13 @@ export class CvComponent implements OnInit {
 
   displayPdf(): void {
     if (this.cv && this.cv.data) {
-      const pdfBlob = new Blob([this.cv.data], { type: 'application/pdf' });
+      const byteCharacters = atob(this.cv.data);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const pdfBlob = new Blob([byteArray], { type: 'application/pdf' });
       const pdfUrl = URL.createObjectURL(pdfBlob);
       this.cv.pdfSrc = this.sanitizer.bypassSecurityTrustResourceUrl(pdfUrl);
     }

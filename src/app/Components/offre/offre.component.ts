@@ -12,7 +12,8 @@ import {AuthenticationService} from "../../Services/authentication.service";
 export class OffreComponent implements OnInit {
     authUserString = localStorage.getItem('authUser');
     public offres: any;
-    postulationReussie: any;
+    message: any;
+    Errormessage: any;
 
     constructor(private offreService: OffreService,private router:Router,public authService:AuthenticationService) {
     }
@@ -41,16 +42,17 @@ export class OffreComponent implements OnInit {
             // Accédez à la propriété "username"
             this.offreService.postuler(authUser.id, offreId).subscribe({
                 next: (data) => {
-                    this.postulationReussie = true;
-                    // Masquez le message après 3000 millisecondes (3 secondes)
-                    setTimeout(() => {
-                        this.postulationReussie = false;
-                    }, 3000);
+                  this.message = "You have successfully postuler to this job";
+                  setTimeout(() => {
+                    this.message = null;
+                  }, 2000); // Efface le message après 2 secondes
                 },
                 error: (err) => {
-                    console.log('Erreur lors de la postulation:', err);
-
-                }
+                        this.Errormessage = "You have already applied to this job";
+                        setTimeout(() => {
+                            this.Errormessage = null;
+                        }, 2000);
+                     }
             });
         }
 
