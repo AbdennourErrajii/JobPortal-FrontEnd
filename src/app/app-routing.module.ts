@@ -8,19 +8,36 @@ import {CandidatureComponent} from "./Components/candidature/candidature.compone
 import {LoginComponent} from "./Components/login/login.component";
 import {AuthenticationGuard} from "./Guards/authentication.guard";
 import {SignupComponent} from "./Components/signup/signup.component";
+import {CvComponent} from "./Components/cv/cv.component";
+import {FormationComponent} from "./Components/formation/formation.component";
+import {ExperienceComponent} from "./Components/experience/experience.component";
+import {PersonalInfoComponent} from "./Components/personal-info/personal-info.component";
 
 const routes: Routes = [
-  { path: "login", component:  LoginComponent},
-  { path: "", component:  LoginComponent },
-  {path:"signup",component:SignupComponent},
-  { path: "user", component:  HeadComponent ,canActivate: [AuthenticationGuard],
-    children:[
-      { path: "home", component:  HomeComponent },
-      { path: "profile", component:   ProfilComponent},
-      { path: "offres", component:  OffreComponent },
-      { path: "candidatures", component:  CandidatureComponent}
-    ]},
+  { path: "login", component: LoginComponent },
+  { path: "", redirectTo: "/login", pathMatch: "full" }, // Rediriger vers la page de connexion par défaut
+  { path: "signup", component: SignupComponent },
+  {
+    path: "user",
+    component: HeadComponent,
+    canActivate: [AuthenticationGuard],
+    children: [
+      { path: "home", component: HomeComponent },
+      {path: "profile", component: ProfilComponent,
+        children: [
+          { path: "", redirectTo: "informations", pathMatch: "full" }, // Redirection vers /profile/informations par défaut
+          { path: "informations", component: PersonalInfoComponent },
+          { path: "CV", component: CvComponent },
+          { path: "formations", component: FormationComponent },
+          { path: "experiences", component: ExperienceComponent }
+        ]
+      },
+      { path: "offres", component: OffreComponent },
+      { path: "candidatures", component: CandidatureComponent }
+    ]
+  },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

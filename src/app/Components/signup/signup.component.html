@@ -1,1 +1,150 @@
-<p>signup works!</p>
+<div class="container px-4 py-1 px-md-5 mt-4 shadow-lg rounded text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+  <div class="container">
+    <div class="row gx-lg-5 align-items-center">
+      <div class="col-lg-2 mb-lg-0">
+        <div class="form-check">
+          <h4 class="text-primary">You Are </h4>
+          <input class="form-check-input" type="radio" name="role" id="employer" value="employer" [(ngModel)]="role" (ngModelChange)="selectRole($event)">
+          <label class="form-check-label" for="employer">
+            Employer
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="role" id="candidate" value="candidate" [(ngModel)]="candidat.role" (ngModelChange)="selectRole($event)">
+          <label class="form-check-label" for="candidate">
+            Candidate
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-10 mb-lg-0">
+        <div class="card">
+          <div class="text-danger"></div>
+          <div class="card-header">
+            <h3 class="text-primary text-center">Sign Up As {{ role }}</h3>
+          </div>
+          <div *ngIf="successMessage" class="alert alert-success" role="alert">
+            {{ successMessage }}
+          </div>
+          <div class="card-body py-1 px-md-5">
+            <!-- Formulaire pour le candidat -->
+            <form *ngIf="role === 'candidate'" class="row g-3" enctype="multipart/form-data">
+
+              <div class="col-md-4">
+                <label  class="form-label">First name</label>
+                <input type="text" class="form-control"  [(ngModel)]="candidat.prenom" name="prenom" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Last name</label>
+                <input type="text" class="form-control"  [(ngModel)]="candidat.nom" name="nom" required>
+              </div>
+             <div class="col-md-4">
+                <label for="genderSelect" class="form-label">Gender</label>
+                <select class="form-control" id="genderSelect"  [(ngModel)]="candidat.sexe" name="sexe">
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label  class="form-label">Phone Number</label>
+                <input type="text" class="form-control"   [(ngModel)]="candidat.telephone" name="telephone" required>
+              </div>
+              <div class="col-md-4">
+                <label  class="form-label">Email</label>
+                <input type="text" class="form-control" placeholder="example@gmail.com"  [(ngModel)]="candidat.email" name="email" required>
+              </div>
+              <div class="col-md-4">
+                <label  class="form-label">Password</label>
+                <input type="password" class="form-control"  [(ngModel)]="candidat.motDePasse" name="motDePasse" required>
+              </div>
+              <div class="col-md-3">
+                <label  class="form-label">City</label>
+                <input type="text" class="form-control"  [(ngModel)]="candidat.lieuDeResidence" name="lieuDeResidence"  required>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Adress</label>
+                <textarea class="form-control"  rows="3"  [(ngModel)]="candidat.adresse" name="adresse" required></textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Lettre Motivation</label>
+                <textarea class="form-control"  rows="3"  [(ngModel)]="candidat.lettreMotivation" name="lettreMotivation" required></textarea>
+              </div>
+
+              <div class="col-md-6">
+                <label for="cvCandidat" class="form-label">Upload CV (PDF)</label>
+                <input type="file" class="form-control-file" id="cvCandidat"  name="cvCandidat" accept=".pdf" (change)="onCvChange($event)">
+              </div>
+
+             <div class="col-md-6">
+                <label for="imageCandidat" class="form-label">Upload Photo</label>
+                <input type="file" class="form-control-file" id="imageCandidat" name="imageCandidat" (change)="onImageChange($event)">
+              </div>
+
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-1" (click)="handelRegister()" >
+                REGISTER
+              </button>
+
+
+            </form>
+            <!-- Formulaire pour l'employeur -->
+            <form *ngIf="role === 'employer'" class="row g-3">
+              <div class="col-md-4">
+                <label  class="form-label">First name</label>
+                <input type="text" class="form-control"  required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Last name</label>
+                <input type="text" class="form-control"  required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Company Name</label>
+                <input type="text" class="form-control"  required>
+              </div>
+
+              <div class="col-md-4">
+                <label  class="form-label">Web Site</label>
+                <input type="text" class="form-control"  placeholder="www.example.com"  required>
+              </div>
+              <div class="col-md-4">
+                <label  class="form-label">Email</label>
+                <input type="text" class="form-control" placeholder="example@gmail.com" required>
+              </div>
+              <div class="col-md-4">
+                <label  class="form-label">Password</label>
+                <input type="password" class="form-control"  required>
+              </div>
+              <div class="col-md-3">
+                <label  class="form-label">City</label>
+                <input type="text" class="form-control"  required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Adress</label>
+                <textarea class="form-control"  rows="3" required></textarea>
+              </div>
+              <div class="col-md-3">
+                <label  class="form-label">Sector of activity</label>
+                <input type="text" class="form-control"  required>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Upload Photo</label>
+                <input type="file" class="form-control-file" id="photoUploadE" accept="image/*">
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-1" (click)="handelRegister()" >
+                REGISTER
+              </button>
+            </form>
+            <!-- Boutons de connexion -->
+            <div class="text-center">
+              <p>You already have an account? :<a class="text-primary" (click)="handelSignIn()">Sign In</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

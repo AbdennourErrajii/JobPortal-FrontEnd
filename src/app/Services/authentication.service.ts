@@ -34,6 +34,7 @@ export class AuthenticationService {
 
 
 
+  // @ts-ignore
   public login(email:string,password:string,role:string):Observable<AppUser>{
     if(role=='candidate'){
         //let appUser=this.users.find(u=>u.username==username && u.password==password);
@@ -41,12 +42,14 @@ export class AuthenticationService {
         if(!appUser) return throwError(()=>new Error("User Not Found !"));
         if(appUser.motDePasse!=password) return throwError(()=>new Error("Wrong Password !"));
         return of(appUser);
-    }else {
+    }else if (role=='employer') {
         //let appUser=this.users.find(u=>u.username==username && u.password==password);
         let appUser=this.employers.find(u=>u.email==email);
         if(!appUser) return throwError(()=>new Error("User Not Found !"));
         if(appUser.motDePasse!=password) return throwError(()=>new Error("Wrong Password !"));
         return of(appUser);
+    }else {
+        return throwError(()=>new Error("User Not Found !"));
     }
 
   }
