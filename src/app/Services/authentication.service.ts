@@ -28,7 +28,7 @@ export class AuthenticationService {
 
     public getEmployers(): Observable<AppUser[]> {
         // Utilisez le retour de la méthode get avec la spécification du type générique
-        return this.http.get<AppUser[]>(this.host + "/employeurs");
+        return this.http.get<AppUser[]>(this.host + "/employeur");
     }
 
 

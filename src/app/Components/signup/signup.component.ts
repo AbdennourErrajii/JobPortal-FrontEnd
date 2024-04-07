@@ -41,9 +41,7 @@ export class SignupComponent implements OnInit {
         lieuDeResidence: '',
         lettreMotivation: '',
         cvCandidat: null,
-        imageCandidat: null,
-        experiencesProfessionnelles: [],
-        formations: []
+        imageCandidat: null
     };
   employeur = {
     nomEntreprise: '',

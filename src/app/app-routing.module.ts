@@ -9,8 +9,6 @@ import {LoginComponent} from "./Components/login/login.component";
 import {AuthenticationGuard} from "./Guards/authentication.guard";
 import {SignupComponent} from "./Components/signup/signup.component";
 import {CvComponent} from "./Components/cv/cv.component";
-import {FormationComponent} from "./Components/formation/formation.component";
-import {ExperienceComponent} from "./Components/experience/experience.component";
 import {PersonalInfoComponent} from "./Components/personal-info/personal-info.component";
 
 const routes: Routes = [
@@ -27,9 +25,8 @@ const routes: Routes = [
         children: [
           { path: "", redirectTo: "informations", pathMatch: "full" }, // Redirection vers /profile/informations par défaut
           { path: "informations", component: PersonalInfoComponent },
-          { path: "CV", component: CvComponent },
-          { path: "formations", component: FormationComponent },
-          { path: "experiences", component: ExperienceComponent }
+          { path: "CV", component: CvComponent }
+
         ]
       },
       { path: "offres", component: OffreComponent },

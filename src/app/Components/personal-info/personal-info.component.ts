@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CandidatureService} from "../../Services/candidature.service";
 import {PersonalInfoService} from "../../Services/personal-info.service";
 
@@ -7,10 +7,10 @@ import {PersonalInfoService} from "../../Services/personal-info.service";
   templateUrl: './personal-info.component.html',
   styleUrl: './personal-info.component.css'
 })
-export class PersonalInfoComponent {
+export class PersonalInfoComponent implements OnInit{
   authUserString = localStorage.getItem('authUser');
   public Candidat:any ;
-
+  isEditable = false;
   constructor(private personalInfoService: PersonalInfoService) {
   }
   ngOnInit(): void {
