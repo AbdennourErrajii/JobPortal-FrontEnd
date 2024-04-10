@@ -9,8 +9,10 @@ import {PersonalInfoService} from "../../Services/personal-info.service";
 })
 export class PersonalInfoComponent implements OnInit{
   authUserString = localStorage.getItem('authUser');
-  public Candidat:any ;
+  public Candidat!: any;
   isEditable = false;
+  showPassword: boolean = false;
+
   constructor(private personalInfoService: PersonalInfoService) {
   }
   ngOnInit(): void {
@@ -21,12 +23,17 @@ export class PersonalInfoComponent implements OnInit{
       this.personalInfoService.getCandidat(authUser.id).subscribe({
         next: (data) => {
           this.Candidat = data;
+          console.log(this.Candidat);
         },
         error: (err) => {
           console.log(err);
         }
       });
     }
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
 }

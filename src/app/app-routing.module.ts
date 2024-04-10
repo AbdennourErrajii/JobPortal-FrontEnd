@@ -10,6 +10,8 @@ import {AuthenticationGuard} from "./Guards/authentication.guard";
 import {SignupComponent} from "./Components/signup/signup.component";
 import {CvComponent} from "./Components/cv/cv.component";
 import {PersonalInfoComponent} from "./Components/personal-info/personal-info.component";
+import {JobOfferDetailComponent} from "./Components/job-offer-detail/job-offer-detail.component";
+import {AddJobOfferComponent} from "./Components/add-job-offer/add-job-offer.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -30,7 +32,9 @@ const routes: Routes = [
         ]
       },
       { path: "offres", component: OffreComponent },
-      { path: "candidatures", component: CandidatureComponent }
+      { path: "candidatures", component: CandidatureComponent },
+      { path: "offre-detail/:id", component: JobOfferDetailComponent },
+      { path: "add-Offer", component: AddJobOfferComponent }
     ]
   },
 ];

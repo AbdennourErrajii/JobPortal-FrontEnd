@@ -43,19 +43,16 @@ export class SignupComponent implements OnInit {
         cvCandidat: null,
         imageCandidat: null
     };
-  employeur = {
-    nomEntreprise: '',
-    nom: '',
-    prenom:'',
-    role: this.role,
-    email: '',
-    motDePasse: '',
-    logo: null,
-    secteurActivite: '',
-    ville: '',
-    adresse: '',
-    offresEmploi: []
-  };
+
+    employeur = {
+        nom: '',
+        prenom: '',
+        username: '',
+        email: '',
+        motDePasse: '',
+        role: this.role,
+        telephone: ''
+    };
 
     handelSignIn() {
         this.router.navigateByUrl('/login');
@@ -137,6 +134,9 @@ export class SignupComponent implements OnInit {
             this.signupService.registerCandidate(this.candidat).subscribe({
                 next: (data) => {
                     this.successMessage = 'successfully created an account';
+                  setTimeout(() => {
+                    this.successMessage = null;
+                  }, 3000);
                 },
                 error: (err) => {
                     console.log('Erreur lors de l\'enregistrement du candidat:', err);
@@ -144,6 +144,17 @@ export class SignupComponent implements OnInit {
             });
 
         } else if (this.role === 'employer') {
+            this.signupService.registerEmployer(this.employeur).subscribe({
+                next: (data) => {
+                    this.successMessage = 'successfully created an account';
+                  setTimeout(() => {
+                    this.successMessage = null;
+                  }, 3000);
+                },
+                error: (err) => {
+                    console.log('Erreur lors de l\'enregistrement de l\'employeur:', err);
+                }
+            });
 
         }
 

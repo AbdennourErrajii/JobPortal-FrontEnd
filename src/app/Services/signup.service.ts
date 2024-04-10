@@ -11,7 +11,6 @@ export class SignupService {
     constructor(private http: HttpClient) { }
 
     registerCandidate(candidateData: any): Observable<any> {
-      console.log(candidateData);
         return this.http.post<any>(`${this.apiUrl}/candidat/add`, candidateData);
     }
 

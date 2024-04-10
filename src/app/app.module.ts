@@ -13,6 +13,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SignupComponent } from './Components/signup/signup.component';
 import { CvComponent } from './Components/cv/cv.component';
 import { PersonalInfoComponent } from './Components/personal-info/personal-info.component';
+import { AddJobOfferComponent } from './Components/add-job-offer/add-job-offer.component';
+import { EditJobOfferComponent } from './Components/edit-job-offer/edit-job-offer.component';
+import { JobOfferDetailComponent } from './Components/job-offer-detail/job-offer-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { PersonalInfoComponent } from './Components/personal-info/personal-info.
     HeadComponent,
     SignupComponent,
     CvComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    AddJobOfferComponent,
+    EditJobOfferComponent,
+    JobOfferDetailComponent
   ],
     imports: [
         BrowserModule,

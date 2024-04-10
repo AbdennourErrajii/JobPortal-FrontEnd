@@ -4,7 +4,7 @@
       <div class="col-lg-2 mb-lg-0">
         <div class="form-check">
           <h4 class="text-primary">You Are </h4>
-          <input class="form-check-input" type="radio" name="role" id="employer" value="employer" [(ngModel)]="role" (ngModelChange)="selectRole($event)">
+          <input class="form-check-input" type="radio" name="role" id="employer" value="employer" [(ngModel)]="employeur.role" (ngModelChange)="selectRole($event)">
           <label class="form-check-label" for="employer">
             Employer
           </label>
@@ -92,47 +92,29 @@
             <form *ngIf="role === 'employer'" class="row g-3">
               <div class="col-md-4">
                 <label  class="form-label">First name</label>
-                <input type="text" class="form-control"  required>
+                <input type="text" class="form-control" [(ngModel)]="employeur.prenom" name="prenom"  required>
               </div>
               <div class="col-md-4">
                 <label class="form-label">Last name</label>
-                <input type="text" class="form-control"  required>
+                <input type="text" class="form-control" [(ngModel)]="employeur.nom" name="nom" required>
               </div>
               <div class="col-md-4">
-                <label class="form-label">Company Name</label>
-                <input type="text" class="form-control"  required>
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" [(ngModel)]="employeur.username" name="username"  required>
               </div>
 
               <div class="col-md-4">
-                <label  class="form-label">Web Site</label>
-                <input type="text" class="form-control"  placeholder="www.example.com"  required>
+                <label  class="form-label">Phone Number</label>
+                <input type="text" class="form-control" [(ngModel)]="employeur.telephone" name="telephone" required>
               </div>
               <div class="col-md-4">
                 <label  class="form-label">Email</label>
-                <input type="text" class="form-control" placeholder="example@gmail.com" required>
+                <input type="text" class="form-control" placeholder="example@gmail.com" [(ngModel)]="employeur.email" name="email" required>
               </div>
               <div class="col-md-4">
                 <label  class="form-label">Password</label>
-                <input type="password" class="form-control"  required>
+                <input type="password" class="form-control" [(ngModel)]="employeur.motDePasse" name="motDePasse" required>
               </div>
-              <div class="col-md-3">
-                <label  class="form-label">City</label>
-                <input type="text" class="form-control"  required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Adress</label>
-                <textarea class="form-control"  rows="3" required></textarea>
-              </div>
-              <div class="col-md-3">
-                <label  class="form-label">Sector of activity</label>
-                <input type="text" class="form-control"  required>
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label">Upload Photo</label>
-                <input type="file" class="form-control-file" id="photoUploadE" accept="image/*">
-              </div>
-
               <!-- Submit button -->
               <button type="submit" class="btn btn-primary btn-block mb-1" (click)="handelRegister()" >
                 REGISTER

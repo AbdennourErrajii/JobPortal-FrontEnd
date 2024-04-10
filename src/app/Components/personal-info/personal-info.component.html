@@ -37,7 +37,21 @@
           <div class="col-md-4">
             <div class="">
               <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" [(ngModel)]="Candidat.email" [readonly]="!isEditable"></div>
-              <div class="col-md-12"><label class="labels">Password</label><input type="text" class="form-control" [(ngModel)]="Candidat.motDePasse" [readonly]="!isEditable"></div>
+              <div class="col-md-12">
+                <label class="labels">Password</label>
+                <div class="input-group">
+                  <input *ngIf="showPassword; else hidePasswordInput" type="text" class="form-control" [(ngModel)]="Candidat.motDePasse" [readonly]="!isEditable">
+                  <ng-template #hidePasswordInput>
+                    <input type="password" class="form-control" [(ngModel)]="Candidat.motDePasse" [readonly]="!isEditable">
+                  </ng-template>
+                  <div class="input-group-append">
+      <span class="input-group-text" (click)="togglePasswordVisibility()">
+        <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+      </span>
+                  </div>
+                </div>
+              </div>
+
               <div class="col-md-12"><label class="labels">Lettre Motivation</label><textarea type="text" class="form-control " style="height: 150px;" [(ngModel)]="Candidat.lettreMotivation" [readonly]="!isEditable"> </textarea></div>
             </div>
           </div>

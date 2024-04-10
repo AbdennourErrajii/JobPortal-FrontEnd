@@ -1,39 +1,98 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" >JobFinder</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/user/home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/user/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/user/offres">Offres</a>
-        </li>
-        <li class="nav-item" *ngIf="authService.isCandidat()">
-          <a class="nav-link" routerLink="/user/candidatures" >My Applications</a>
-        </li>
-
-
-      </ul>
-      <ul class="navbar-nav">
-        <li>
-          <a class=" btn nav-link" (click)="handlelogout()">
-            <i class="bi bi-box-arrow-right"></i>
-          </a>
-        </li>
-      </ul>
+<div class="sidebar">
+  <div class="logo-details">
+    <i class="fa fa-bars"></i>
+    <div class="logo_name" *ngIf="authUser">
+      <p>{{ authUser.role.toUpperCase() }}</p>
     </div>
+    <i class="fa" id="btn"></i>
   </div>
-</nav>
+  <ul class="nav-list" *ngIf="authUser.role=='candidate'">
+    <li [routerLink]="['/user/home']">
+      <a>
+        <i class="fa fa-home"></i>
+        <span class="links_name">Home</span>
+      </a>
+      <span class="tooltip">Home</span>
+    </li>
+    <li [routerLink]="['/user/profile']">
+      <a>
+        <i class="fa fa-user"></i>
+        <span class="links_name">Profile</span>
+      </a>
+      <span class="tooltip">Profile</span>
+    </li>
+    <li [routerLink]="['/user/offres']">
+      <a>
+        <i class="fa fa-regular fa-briefcase"></i>
+        <span class="links_name">Offres</span>
+      </a>
+      <span class="tooltip">Offres</span>
+    </li>
+    <li [routerLink]="['/user/candidatures']">
+      <a>
+        <i class="fa fa-th-list"></i>
+        <span class="links_name">My Applications</span>
+      </a>
+      <span class="tooltip">My Applications</span>
+    </li>
+    <li>
+      <a class=" btn nav-link" (click)="handlelogout()">
+        <i class="fa fa-solid fa-arrow-right-from-bracket"></i>
+        <span class="links_name">log out</span>
+      </a>
+      <span class="tooltip">Log out</span>
+    </li>
 
-<router-outlet>
+  </ul>
 
+  <ul class="nav-list" *ngIf="authUser.role=='employer'">
+    <li [routerLink]="['/user/home']">
+      <a>
+        <i class="fa fa-home"></i>
+        <span class="links_name">Home</span>
+      </a>
+      <span class="tooltip">Home</span>
+    </li>
+    <li [routerLink]="['']">
+      <a>
+        <i class="fa fa-user"></i>
+        <span class="links_name">Profile</span>
+      </a>
+      <span class="tooltip">Profile</span>
+    </li>
+    <li [routerLink]="['/user/offres']">
+      <a>
+        <i class="fa fa-regular fa-briefcase"></i>
+        <span class="links_name">Job Offres</span>
+      </a>
+      <span class="tooltip">job Offres</span>
+    </li>
+    <li [routerLink]="['']">
+      <a>
+        <i class="fa fa-th-list"></i>
+        <span class="links_name">My job offers</span>
+      </a>
+      <span class="tooltip">My job offers</span>
+    </li>
+    <li>
+    <li [routerLink]="['/user/add-Offer']">
+      <a>
+        <i class="fa fa-th-list"></i>
+        <span class="links_name">Add Offer</span>
+      </a>
+      <span class="tooltip">Add Offer</span>
+    </li>
+    <li>
+      <a class=" btn nav-link" (click)="handlelogout()">
+        <i class="fa fa-solid fa-arrow-right-from-bracket"></i>
+        <span class="links_name">log out</span>
+      </a>
+      <span class="tooltip">Log out</span>
+    </li>
 
-</router-outlet>
+  </ul>
+
+</div>
+<div class="router-content">
+  <router-outlet></router-outlet>
+</div>

@@ -1,3 +1,4 @@
+/*
 body{
   background: #F4F7FD;
   margin-top:20px;
@@ -310,7 +311,53 @@ body{
   text-transform: uppercase;
 }
 
-/*!* Ajoutez cette classe pour définir une largeur personnalisée pour chaque carte *!
+!*!* Ajoutez cette classe pour définir une largeur personnalisée pour chaque carte *!
 .custom-card-width {
   height: 250px; !* Ajustez la valeur en pixels selon vos besoins *!
-}*/
+}*!
+
+*/
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: none; /* Removes the border */
+  overflow: hidden; /* Ensures the border-radius applies to all elements inside the card */
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #f8f9fa; /* Gives a light background color */
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: none; /* Removes the border */
+  padding: 10px 20px;
+}
+
+.card-text {
+  margin-bottom: .5rem;
+  border: none; /* Removes the border */
+  color: #333; /* Gives a dark color to the text */
+}
+
+.card__hero-alter-ego {
+  font-size: 24px;
+  color: #333;
+}
+
+.card__hero-real-name {
+  font-size: 18px;
+  color: #777;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
